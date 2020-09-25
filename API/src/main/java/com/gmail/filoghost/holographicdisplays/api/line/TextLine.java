@@ -14,6 +14,9 @@
  */
 package com.gmail.filoghost.holographicdisplays.api.line;
 
+import net.md_5.bungee.api.chat.BaseComponent;
+import org.bukkit.ChatColor;
+
 public interface TextLine extends TouchableLine {
 
 	/**
@@ -29,5 +32,15 @@ public interface TextLine extends TouchableLine {
 	 * @param text the new text of this line.
 	 */
 	public void setText(String text);
+
+
+	/**
+	 * Sets the text of this TextLine.
+	 *
+	 * @param components The {@link BaseComponent}s which represent the text.
+	 */
+	public default void setText(BaseComponent... components) {
+		setText(ChatColor.translateAlternateColorCodes('&', BaseComponent.toLegacyText(components)));
+	}
 	
 }
